@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                $(this).hide();
+                $("p").hide();
+            });
+        });
+    </script>
+    <script>
+        function calculate() {
+            // Get the form inputs
+            var operand1 = document.getElementById("operand1").value;
+            var operand2 = document.getElementById("operand2").value;
+            var operator = document.getElementById("operator").value;
+            // Validate the inputs
+            if (isNaN(operand1) || isNaN(operand2)) {
+                alert("Please enter numeric values for both operands.");
+                return;
+            }
+            if (operator === "division" && operand2 == 0) {
+                alert("Division by zero is not allowed.");
+                return;
+            }
+            // Perform the arithmetic operation
+            var result;
+            switch (operator) {
+                case "addition":
+                    result = Number(operand1) + Number(operand2);
+                    break;
+                case "subtraction":
+                    result = operand1 - operand2;
+                    break;
+                case "multiplication":
+                    result = operand1 * operand2;
+                    break;
+                case "division":
+                    result = operand1 / operand2;
+                    break;
+            }
+            // Display the result
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <h1>Here below is an example on how to manipulate jQuery</h1>
+        <p>hello there, can you hide?</p>
+        <button>Hello there,, how are you</button> -->
+
+    </div>
+
+    <h1>Basic Arithmetic</h1>
+    <form>
+        <label for="operand1">Operand 1:</label>
+        <input type="text" id="operand1"><br>
+        <label for="operand2">Operand 2:</label>
+        <input type="text" id="operand2"><br>
+        <label for="operator">Operation:</label>
+        <select id="operator">
+    <option value="addition">Addition</option>
+    <option value="subtraction">Subtraction</option>
+    <option value="multiplication">Multiplication</option>
+            <option value="division">Division</option>
+            </select><br>
+        <input type="button" value="Calculate" onclick="calculate()">
+    </form>
+    </div>
+    <div id="result"></div>
+
+</body>
+
+</html>
